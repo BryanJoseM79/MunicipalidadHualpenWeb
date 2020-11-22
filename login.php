@@ -73,7 +73,7 @@ mysqli_close($conexion);
               <input class="form-control" type="password" placeholder="Contraseña" name="pass">
             </div>
                 
-          
+                <!-- BOTON PARA INGRESAR A LA PAGINA -->
             <input class="btn btn-primary" type="submit" value="Ingresar" name="submit">
              
              <a href="registro/registro.php" class="btn btn-primary">Registrarse</a>
