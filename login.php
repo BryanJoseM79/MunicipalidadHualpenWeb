@@ -8,8 +8,6 @@ $pass = $_POST["pass"];
 //iniciamos sesion
 session_start();
 
-$_SESSION['email'] = $email;
-
 if(isset($_POST['submit'])){
 //verificamos que usuario y pass sean el mismo
 $consulta = "SELECT*FROM usuario 
@@ -18,12 +16,14 @@ $consulta = "SELECT*FROM usuario
 $resultado=mysqli_query($conexion,$consulta);
 
 $filas = mysqli_fetch_array($resultado);
+$_SESSION['roles_id'] = "$rol";
+$_SESSION['email'];
 
 if($filas['roles_id']==1){
   echo "<script> window.location='administracion/admin.php'; </script>";
 }else
 if($filas['roles_id']==2){
-  echo "<script> window.location='organizaciones/indexlogeado.html'; </script>";
+  echo "<script> window.location='organizaciones/indexlogeado.php'; </script>";
 }
 else{
     echo "Error en la autentificacion";
@@ -31,7 +31,7 @@ else{
 }
 
 }
-session_destroy();
+
 mysqli_close($conexion);
 ?>
 <!doctype html>

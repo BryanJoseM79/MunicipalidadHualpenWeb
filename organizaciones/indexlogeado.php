@@ -1,3 +1,13 @@
+<?php
+
+//Si la variable sesión está vacía
+if (!isset($_SESSION['roles_id'])) 
+{
+   /* nos envía a la siguiente dirección en el caso de no poseer autorización */
+   header("location:../index.html"); 
+}
+
+?>
 <!doctype html>
 <html lang="en">
 
