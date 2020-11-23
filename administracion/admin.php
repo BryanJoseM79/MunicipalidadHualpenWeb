@@ -42,6 +42,8 @@ include("../registro/connect_db.php");
           <li class="nav-item active">
             <a class="nav-link" href="../index.html"> Panel de Control <span class="sr-only">(current)</span></a>
           </li>
+          <!--<li class="nav-item espacio-ingresar"> BOTON PARA SALIR
+            <a class="nav-link btn btn-dark "  href="../registro/salir.php">Salir</a>-->
           <li class="nav-item">
             <a class="nav-link" href="../somos.html">Paginas</a>
           </li>

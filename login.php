@@ -20,10 +20,10 @@ $resultado=mysqli_query($conexion,$consulta);
 $filas = mysqli_fetch_array($resultado);
 
 if($filas['roles_id']==1){
-    header("location:administracion/admin.php");
+  echo "<script> window.location='administracion/admin.php'; </script>";
 }else
 if($filas['roles_id']==2){
-    header("location:organizacion/indexlogeado.html");
+  echo "<script> window.location='organizaciones/indexlogeado.html'; </script>";
 }
 else{
     echo "Error en la autentificacion";
@@ -59,7 +59,7 @@ mysqli_close($conexion);
             <img class="img-fluid" src="img/unnamed (1).png" alt="">
           </div>
 
-          <form class="col-12" action="POST">
+          <form class="col-12" action=""  method="POST" >
             <div class="form-group" id="user-group">
               <input class="form-control" type="text" placeholder="Correo electronico" name="email">
 
