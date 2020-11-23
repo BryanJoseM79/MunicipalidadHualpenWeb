@@ -1,22 +1,17 @@
 <?php
+include("registro/connect_db.php");
 
-$server = "localhost";
-  $user = "root";
-  $pass = "";
-  $bd = "hualpen";
- 
-//usamos las mismas variables del archivo configuracion.php
-$conexion = new mysqli($server,$user,$pass,$bd);
-
-
-//declaraamos variables
+//llamamos variables
 $email = $_POST["email"];
 $pass = $_POST["pass"];
+//$rol_id = $_POST["rol_id"];
 //iniciamos sesion
 session_start();
 
 $_SESSION['email'] = $email;
 
+if(isset($_POST['submit'])){
+//verificamos que usuario y pass sean el mismo
 $consulta = "SELECT*FROM usuario 
                     where email='$email' and pass = '$pass'";
 
@@ -25,18 +20,18 @@ $resultado=mysqli_query($conexion,$consulta);
 $filas = mysqli_fetch_array($resultado);
 
 if($filas['roles_id']==1){
-    header("location:../administracion/admin.html");
+    header("location:administracion/admin.php");
 }else
-
 if($filas['roles_id']==2){
-    header("Location:index2.html");
+    header("location:organizacion/indexlogeado.html");
 }
 else{
     echo "Error en la autentificacion";
 
 }
 
-mysqli_free_result($resultado);
+}
+session_destroy();
 mysqli_close($conexion);
 ?>
 <!doctype html>
