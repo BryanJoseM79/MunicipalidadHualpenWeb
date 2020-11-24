@@ -44,7 +44,7 @@ nav.sps--blw .logotipo{
     height: 30px;
 }
 .banner-video{
-    background-image: url(../img/video-bg.jpg);
+    background-image: url(../img/senda.png);
     padding: 100px 0;
     position: relative;
     text-align: center;
@@ -180,4 +180,11 @@ footer p{
     border-radius: 15% !important;
     background: darkturquoise !important;
     border-color: darkturquoise !important;
+}
+.fondoletras{
+    background-color: chocolate;
+}
+
+.flyer-altura{
+    height: 1800px !important;
 }
