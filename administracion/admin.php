@@ -1,4 +1,20 @@
+<?php
+include("../registro/connect_db.php");
+
+session_start();
+
+//Si la variable sesión está vacía
+if (!isset($_SESSION['roles_id'])) 
+{
+   /* nos envía a la siguiente dirección en el caso de no poseer autorización */
+   header("location:../index.html"); 
+}
+
+?>
+
+
 <!doctype html>
+
 <html lang="en">
 
 <head>
@@ -35,6 +51,8 @@
           <li class="nav-item active">
             <a class="nav-link" href="../index.html"> Panel de Control <span class="sr-only">(current)</span></a>
           </li>
+          <!--<li class="nav-item espacio-ingresar"> BOTON PARA SALIR
+            <a class="nav-link btn btn-dark "  href="../registro/salir.php">Salir</a>-->
           <li class="nav-item">
             <a class="nav-link" href="../somos.html">Paginas</a>
           </li>
@@ -143,57 +161,41 @@
                   <table class="table table-hover table-dark">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Email</th>
                         <th scope="col">Telefono</th>
                         <th scope="col">Organizacion RUN</th>
+                        <th scope="col">Rol</th>
                       </tr>
+
+                      <?php
+                       $query = mysqli_query($conexion,"SELECT u.id, u.nombre, u.email, u.telefono, u.organizacion_run, r.rol  
+                       FROM `usuario` AS u INNER JOIN roles AS r ON u.roles_id = r.id");
+                      
+                      $result = mysqli_num_rows($query);
+                      if($result > 0){
+
+                        while ($data = mysqli_fetch_array($query)){
+
+
+                       ?>
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row">27</th>
-                        <td>Carol</td>
-                        <td>carolmar@gmail.com</td>
-                        <td>914785236</td>
-                        <td>789</td>
+                        <th scope="row"><?php echo $data["id"]; ?></th>
+                        <td><?php echo $data["nombre"];?></td>
+                        <td><?php echo $data["email"]; ?></td>
+                        <td><?php echo $data["telefono"]; ?></td>
+                        <td><?php echo $data["organizacion_run"]; ?></td>
+                        <td><?php echo $data['rol']; ?></td>
                         
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                        
-                      
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td>Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                        
-                      </tr>
-                      <tr>
-                        <th scope="row">5</th>
-                        <td>Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                        
-                      </tr>
-                      <tr>
-                        <th scope="row">6</th>
-                        <td>Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                        
-                      </tr>
+                    </tr>
+
+                  <?php
+                  }
+                }
+                ?>
                     </tbody>
                   </table>
                       </div>
