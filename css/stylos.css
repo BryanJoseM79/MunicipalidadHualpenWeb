@@ -44,12 +44,15 @@ nav.sps--blw .logotipo{
     height: 30px;
 }
 .banner-video{
-    background-image: url(../img/senda.png);
-    padding: 100px 0;
+    background-image: url(../img/banner-transparencia-activa-2018.png);
+    background-repeat: no-repeat; /* evita que se repita la imagen */
+    background-size: 100%; /* usa el 100% del largo de la pantalla */
+    padding: 200px 150px;
     position: relative;
     text-align: center;
-    
-}
+    width: 100%;
+    height: 100%;
+  }
 .banner-video img{
     width: 80px;
     height: 80px;
@@ -182,7 +185,7 @@ footer p{
     border-color: darkturquoise !important;
 }
 .fondoletras{
-    background-color: chocolate;
+    color: black;
 }
 
 .flyer-altura{
