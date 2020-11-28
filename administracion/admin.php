@@ -1,4 +1,5 @@
 <?php
+/*
 include("../registro/connect_db.php");
 
 session_start();
@@ -6,10 +7,10 @@ session_start();
 //Si la variable sesión está vacía
 if (!isset($_SESSION['roles_id'])) 
 {
-   /* nos envía a la siguiente dirección en el caso de no poseer autorización */
+   /* nos envía a la siguiente dirección en el caso de no poseer autorización 
    header("location:../index.html"); 
 }
-
+*/
 ?>
 
 
@@ -38,7 +39,7 @@ if (!isset($_SESSION['roles_id']))
 <!-- MENU  -->
   <nav class="navbar navbar-expand-lg navbar-dark  fixed-top sps sps--abv">
     <div class="container">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="../index.html">
         <img class="logotipo" src="../img/unnamed (1).png" alt="logo-municipalidad">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -54,7 +55,7 @@ if (!isset($_SESSION['roles_id']))
           <!--<li class="nav-item espacio-ingresar"> BOTON PARA SALIR
             <a class="nav-link btn btn-dark "  href="../registro/salir.php">Salir</a>-->
           <li class="nav-item">
-            <a class="nav-link" href="../somos.html">Paginas</a>
+            <a class="nav-link" href="../index.html">Paginas</a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="#" id="navbarDropdown" role="button">
@@ -167,6 +168,8 @@ if (!isset($_SESSION['roles_id']))
                         <th scope="col">Telefono</th>
                         <th scope="col">fecha_reg</th>
                         <th scope="col">Rol</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Eliminar</th>
                       </tr>
 
                       <?php

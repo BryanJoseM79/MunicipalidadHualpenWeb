@@ -1,13 +1,21 @@
+<<<<<<< HEAD
 <?php
 session_start();
 //Si la variable sesión corresponde a la de organizacion
+=======
+
+<?php
+/*
+//Si la variable sesión está vacía
+>>>>>>> 8cc0fe744fad60927483a857c8971a8b1a71726b
 if (!isset($_SESSION['roles_id'])) 
 {
-   /* nos envía a la siguiente dirección en el caso de no poseer autorización */
+   /* nos envía a la siguiente dirección en el caso de no poseer autorización 
    header("location:../index.html"); 
 }
-
+*/
 ?>
+
 <!doctype html>
 <html lang="en">
 

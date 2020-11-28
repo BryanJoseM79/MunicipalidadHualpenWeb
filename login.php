@@ -13,24 +13,30 @@ $pass = md5($_POST['pass']);
 $consulta = "SELECT*FROM usuario 
                     where email='$email' and pass = '$pass'";
 
-
-
 $resultado=mysqli_query($conexion,$consulta);
 
-$filas = mysqli_fetch_array($resultado);
-$_SESSION['roles_id'] = "$rol";
-$_SESSION['email'];
+if($resultado > 0)
+{
+$data = mysqli_fetch_array($resultado);
+$_SESSION['active']   =true;
+$_SESSION['id']       =$data['id'];
+$_SESSION['nombre']   =$data['nombre'];
+$_SESSION['email']    =$data['email'];
+$_SESSION['roles_id'] =$data['roles_id'];
 
-if($filas['roles_id']==1){
+if($data['roles_id']==1){
   echo "<script> window.location='administracion/admin.php'; </script>";
 }else
-if($filas['roles_id']==2){
+if($data['roles_id']==2){
   echo "<script> window.location='organizaciones/indexlogeado.php'; </script>";
 }
 else{
     echo "Error en la autentificacion";
 
 }
+
+}
+
 
 }
 

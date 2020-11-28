@@ -44,7 +44,7 @@ nav.sps--blw .logotipo{
     height: 30px;
 }
 .banner-video{
-    background-image: url(../img/banner-transparencia-activa-2018.png);
+    background-image: url(../img/senda.png);
     background-repeat: no-repeat; /* evita que se repita la imagen */
     background-size: 100%; /* usa el 100% del largo de la pantalla */
     padding: 200px 150px;
@@ -190,4 +190,9 @@ footer p{
 
 .flyer-altura{
     height: 1800px !important;
+}
+
+/* ZOM IMAGENES INDEX */
+.box img:hover{
+    transform: scale(1.9);
 }
