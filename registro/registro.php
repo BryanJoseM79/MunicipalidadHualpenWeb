@@ -1,3 +1,52 @@
+<?php
+
+
+//recibir los datos y almacenarlos en variables
+if(!empty($_POST))
+{
+	$alert = '';
+	if(empty($_POST['nombre']) || empty($_POST['email']) || empty($_POST['telefono']) || empty($_POST['pass']) || empty($_POST['rol']))
+	{
+		$alert = '<p>Todos los campos son obligatorios.</p>';
+	}else{
+
+    include "connect_db.php";
+
+	$nombre = $_POST['nombre'];
+	$email = $_POST['email'];
+	$telefono = $_POST['telefono'];
+	$pass = md5($_POST['pass']);
+	$fecha_reg = date("d/m/y");
+	$rol = $_POST['rol'];
+	//verificar que el email no este duplicado
+		
+	$query = mysqli_query($conexion, "SELECT * FROM usuario WHERE email = '$email'");
+	$result = mysqli_fetch_array($query);
+
+	if ($result > 0){
+		$alert = '<p> El correo ya esta registrado. </p>';
+	}else{
+
+	//consulta para insertar
+	$query_insert = mysqli_query($conexion, "INSERT INTO usuario(nombre, email, telefono, pass, fecha_reg, roles_id)
+				VALUES ('$nombre','$email','$telefono','$pass','$fecha_reg','$rol')");
+	//ejecutar consulta
+	
+	if($query_insert){
+		$alert = '<p> Usuario Creado. </p>';
+			
+		}else{
+		$alert = '<p> Error al crear el usuario </p>';
+			
+			}
+		}
+	}
+}
+	//cerrar conexion
+	mysqli_close($conexion);
+	
+
+?>	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,13 +114,18 @@
 
 <section class="formulario_de_registro">
     <h4>Formulario de Registro</h4>
-  <form action="registro_codigo.php" method="POST">
+    <div><?php echo isset($alert)? $alert : ''; ?></div>
+  <form action="" method="POST">
     <input class="controls" type="nombre"   name="nombre"            id=""   placeholder="Ingrese su Nombre">
     <input class="controls" type="email"    name="email"             id=""   placeholder="Ingrese su Correo">
     <input class="controls" type="number"   name="telefono"          id=""   placeholder="Ingrese su Telefono">
     <input class="controls" type="password" name="pass"              id=""   placeholder="Ingrese su Contraseña">
     <input class="controls" type="password" name="rpass"             id=""   placeholder="Ingrese Nuevamente su Contraseña">
-    <input class="controls" type="number"   name="organizacion_run"  id=""   placeholder="Ingrese el RUN de su Organización">
+    <label for="rol">Escoja un Rol:</label>
+    <select name="rol"> 
+    <option value="1">Administrador</option>
+    <option value="2">Organizacion</option>
+      </select>
         <p>Estoy de acuerdo con 
             <a href="">Terminos y Condiciones</a> 
         </p>
@@ -81,7 +135,7 @@
     
     <input class="boton2" type="reset">
         <p>
-          <a href="../login.html">¿Ya tengo cuenta?</a>  
+          <a href="../login.php">¿Ya tengo cuenta?</a>  
         </p>
   </form>
 </section>

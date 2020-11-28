@@ -165,12 +165,12 @@ if (!isset($_SESSION['roles_id']))
                         <th scope="col">Nombre</th>
                         <th scope="col">Email</th>
                         <th scope="col">Telefono</th>
-                        <th scope="col">Organizacion RUN</th>
+                        <th scope="col">fecha_reg</th>
                         <th scope="col">Rol</th>
                       </tr>
 
                       <?php
-                       $query = mysqli_query($conexion,"SELECT u.id, u.nombre, u.email, u.telefono, u.organizacion_run, r.rol  
+                       $query = mysqli_query($conexion,"SELECT u.id, u.nombre, u.email, u.telefono, u.fecha_reg, r.rol  
                        FROM `usuario` AS u INNER JOIN roles AS r ON u.roles_id = r.id");
                       
                       $result = mysqli_num_rows($query);
@@ -187,7 +187,7 @@ if (!isset($_SESSION['roles_id']))
                         <td><?php echo $data["nombre"];?></td>
                         <td><?php echo $data["email"]; ?></td>
                         <td><?php echo $data["telefono"]; ?></td>
-                        <td><?php echo $data["organizacion_run"]; ?></td>
+                        <td><?php echo $data["fecha_reg"]; ?></td>
                         <td><?php echo $data['rol']; ?></td>
                         
                     </tr>

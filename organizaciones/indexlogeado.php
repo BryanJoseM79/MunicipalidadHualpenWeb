@@ -1,6 +1,6 @@
 <?php
-
-//Si la variable sesión está vacía
+session_start();
+//Si la variable sesión corresponde a la de organizacion
 if (!isset($_SESSION['roles_id'])) 
 {
    /* nos envía a la siguiente dirección en el caso de no poseer autorización */

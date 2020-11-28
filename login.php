@@ -1,17 +1,19 @@
 <?php
 include("registro/connect_db.php");
 
-//llamamos variables
-$email = $_POST["email"];
-$pass = $_POST["pass"];
-//$rol_id = $_POST["rol_id"];
 //iniciamos sesion
 session_start();
 
 if(isset($_POST['submit'])){
+//llamamos variables
+$email = $_POST['email'];
+$pass = md5($_POST['pass']);
+//$rol_id = $_POST["rol_id"];
 //verificamos que usuario y pass sean el mismo
 $consulta = "SELECT*FROM usuario 
                     where email='$email' and pass = '$pass'";
+
+
 
 $resultado=mysqli_query($conexion,$consulta);
 
