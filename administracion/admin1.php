@@ -1,19 +1,3 @@
-<?php
-/*
-include("../registro/connect_db.php");
-
-session_start();
-
-//Si la variable sesión está vacía
-if (!isset($_SESSION['roles_id'])) 
-{
-   /* nos envía a la siguiente dirección en el caso de no poseer autorización 
-   header("location:../index.html"); 
-}
-*/
-?>
-
-
 <!doctype html>
 
 <html lang="en">
@@ -28,6 +12,7 @@ if (!isset($_SESSION['roles_id']))
   <!-- Estilos perzonalizados-->
   <link rel="stylesheet" href="../css/stylos.css">
   <link rel="stylesheet" href="../css/stylo_admin.css">
+  <link rel="stylesheet" href="../css/administracion2.css">
   
 
   
@@ -55,7 +40,7 @@ if (!isset($_SESSION['roles_id']))
           <!--<li class="nav-item espacio-ingresar"> BOTON PARA SALIR
             <a class="nav-link btn btn-dark "  href="../registro/salir.php">Salir</a>-->
           <li class="nav-item">
-            <a class="nav-link" href="../index.html">Proyectos</a>
+            <a class="nav-link" href="../index.html">Paginas</a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="#" id="navbarDropdown" role="button">
@@ -102,9 +87,9 @@ if (!isset($_SESSION['roles_id']))
             </a>
           
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">Agregar Proyecto</a>
-              <a class="dropdown-item" href="#"></a>
-              <a class="dropdown-item" href="admin1.php">Agregar Usuario</a>
+              <a class="dropdown-item" href="#">Agregar Pagina</a>
+              <a class="dropdown-item" href="#">Agregar Entrada</a>
+              <a class="dropdown-item" href="#">Agregar Usuario</a>
             </div>
           </div>
         </div>
@@ -159,48 +144,22 @@ if (!isset($_SESSION['roles_id']))
                 </div>
 
                 <div class="col-md-9">
-                  <table class="table table-hover table-dark">
-                    <thead>
-                      <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Telefono</th>
-                        <th scope="col">fecha_reg</th>
-                        <th scope="col">Rol</th>
-                        <th scope="col">Editar</th>
-                        <th scope="col">Eliminar</th>
-                      </tr>
-
-                      <?php
-                       $query = mysqli_query($conexion,"SELECT u.id, u.nombre, u.email, u.telefono, u.fecha_reg, r.rol  
-                       FROM `usuario` AS u INNER JOIN roles AS r ON u.roles_id = r.id");
-                      
-                      $result = mysqli_num_rows($query);
-                      if($result > 0){
-
-                        while ($data = mysqli_fetch_array($query)){
-
-
-                       ?>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><?php echo $data["id"]; ?></th>
-                        <td><?php echo $data["nombre"];?></td>
-                        <td><?php echo $data["email"]; ?></td>
-                        <td><?php echo $data["telefono"]; ?></td>
-                        <td><?php echo $data["fecha_reg"]; ?></td>
-                        <td><?php echo $data['rol']; ?></td>
-                        
-                    </tr>
-
-                  <?php
-                  }
-                }
-                ?>
-                    </tbody>
-                  </table>
+                    <section class="formulario-admininis">
+                    <form action="" method="POST">
+                            <h5 class="">Igrese nombre</h5>
+                        <input class="inputines" type="nombre"   name="nombre"            id=""   placeholder="Ingrese su Nombre">
+                        <input class="inputines" type="email"    name="email"             id=""   placeholder="Ingrese su Correo">
+                        <input class="inputines" type="number"   name="telefono"          id=""   placeholder="Ingrese su Telefono">
+                        <input class="inputines" type="password" name="pass"              id=""   placeholder="Ingrese su Contraseña">
+                        <input class="inputines" type="password" name="rpass"             id=""   placeholder="Ingrese Nuevamente su Contraseña">
+                        <input class="inputines" type="number"   name="organizacion_run"  id=""   placeholder="Ingrese el RUN de su Organización">
+                           
+                            <a href="../index2.html">
+                            <input class="boton1" type="submit" name="submit" value="Registrarse">
+                            </a>
+                        <input class="boton2" type="reset">
+                      </form>
+                    </section>
                       </div>
                   </div>
                 </div>
