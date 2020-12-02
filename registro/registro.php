@@ -1,5 +1,5 @@
 <?php
-
+include("connect_db.php");
 
 //recibir los datos y almacenarlos en variables
 if(!empty($_POST))
@@ -123,7 +123,6 @@ if(!empty($_POST))
     <input class="controls" type="password" name="rpass"             id=""   placeholder="Ingrese Nuevamente su Contraseña">
     <label for="rol">Escoja un Rol:</label>
     <select name="rol"> 
-    <option value="1">Administrador</option>
     <option value="2">Organizacion</option>
       </select>
         <p>Estoy de acuerdo con 

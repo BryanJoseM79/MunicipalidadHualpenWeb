@@ -28,7 +28,7 @@ if($data['roles_id']==1){
   echo "<script> window.location='administracion/admin.php'; </script>";
 }else
 if($data['roles_id']==2){
-  echo "<script> window.location='organizaciones/indexlogeado.php'; </script>";
+  echo "<script> window.location='organizaciones/completarre.php'; </script>";
 }
 else{
     echo "Error en la autentificacion";

@@ -1,7 +1,7 @@
 <?php
-/*
-include("../registro/connect_db.php");
 
+include("../registro/connect_db.php");
+/*
 session_start();
 
 //Si la variable sesión está vacía
