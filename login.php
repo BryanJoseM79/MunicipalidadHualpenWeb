@@ -22,9 +22,7 @@ $consulta2 = "SELECT*FROM usuario WHERE email='$email' AND roles_id='$rol_id'";
 
 $resultado2=mysqli_query($conexion,$consulta2);
 $valor2 = mysqli_fetch_array($resultado2);
-
-
-
+ 
 //aqui preguntamos si la ID es concordante con el tipo de usuario seleccionado
 if($valor2['roles_id']==1){
   header("location:administracion/admin.php");

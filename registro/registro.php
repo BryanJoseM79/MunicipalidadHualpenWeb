@@ -5,13 +5,13 @@ include("connect_db.php");
 if(!empty($_POST))
 {
 	$alert = '';
-	if(empty($_POST['nombre']) || empty($_POST['email']) || empty($_POST['telefono']) || empty($_POST['pass']) || empty($_POST['rol']))
+	if(empty($_POST['run']) || empty($_POST['nombre']) || empty($_POST['email']) || empty($_POST['telefono']) || empty($_POST['pass']) || empty($_POST['rol']))
 	{
 		$alert = '<p>Todos los campos son obligatorios.</p>';
 	}else{
 
     include "connect_db.php";
-
+  $run = $_POST['run'];
 	$nombre = $_POST['nombre'];
 	$email = $_POST['email'];
 	$telefono = $_POST['telefono'];
@@ -20,16 +20,16 @@ if(!empty($_POST))
 	$rol = $_POST['rol'];
 	//verificar que el email no este duplicado
 		
-	$query = mysqli_query($conexion, "SELECT * FROM usuario WHERE email = '$email'");
+	$query = mysqli_query($conexion, "SELECT * FROM usuario WHERE email = '$email' AND run = '$run'");
 	$result = mysqli_fetch_array($query);
 
 	if ($result > 0){
-		$alert = '<p> El correo ya esta registrado. </p>';
+		$alert = '<p> El correo o run ya esta registrado. </p>';
 	}else{
 
 	//consulta para insertar
-	$query_insert = mysqli_query($conexion, "INSERT INTO usuario(nombre, email, telefono, pass, fecha_reg, roles_id)
-				VALUES ('$nombre','$email','$telefono','$pass','$fecha_reg','$rol')");
+	$query_insert = mysqli_query($conexion, "INSERT INTO usuario(run, nombre, email, telefono, pass, fecha_reg, roles_id)
+				VALUES ('$run','$nombre','$email','$telefono','$pass','$fecha_reg','$rol')");
 	//ejecutar consulta
 	
 	if($query_insert){
@@ -116,9 +116,10 @@ if(!empty($_POST))
     <h4>Formulario de Registro</h4>
     <div><?php echo isset($alert)? $alert : ''; ?></div>
   <form action="" method="POST">
-    <input class="controls" type="nombre"   name="nombre"            id=""   placeholder="Ingrese su Nombre">
-    <input class="controls" type="email"    name="email"             id=""   placeholder="Ingrese su Correo">
-    <input class="controls" type="number"   name="telefono"          id=""   placeholder="Ingrese su Telefono">
+    <input class="controls" type="run"      name="run"               id=""   placeholder="Ingrese RUT representante">
+    <input class="controls" type="nombre"   name="nombre"            id=""   placeholder="Ingrese Nombre">
+    <input class="controls" type="email"    name="email"             id=""   placeholder="Ingrese Correo">
+    <input class="controls" type="number"   name="telefono"          id=""   placeholder="Ingrese Telefono">
     <input class="controls" type="password" name="pass"              id=""   placeholder="Ingrese su Contraseña">
     <input class="controls" type="password" name="rpass"             id=""   placeholder="Ingrese Nuevamente su Contraseña">
     <label for="rol">Escoja un Rol:</label>
